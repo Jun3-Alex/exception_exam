@@ -6,6 +6,12 @@ import java.util.Date;
 public class DataParser {
 
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy");
+    /**
+     * Проверяет, является ли указанная дата допустимой.
+     *
+     * @param  date  проверяемая дата
+     * @return       true, если дата допустима, иначе false
+     */
     private static boolean isValidDate(String date) {
         try {
             Date parsedDate = DATE_FORMAT.parse(date);
@@ -23,6 +29,16 @@ public class DataParser {
         }
     }
 
+    /**
+     * Парсирует заданную строку входных данных и возвращает объект UserData.
+     *
+     * @param  input строка, содержащая данные пользователя, разделенные запятыми
+     * @return       объект UserData, полученный в результате парсинга
+     * @throws       IllegalArgumentException, если входная строка не содержит правильное количество параметров,
+     *               или если дата рождения не соответствует правильному формату,
+     *               или если дата рождения не является допустимой,
+     *               или если возникла ошибка при парсинге входных данных
+     */
     public static UserData parseUserData(String input) throws IllegalArgumentException {
 
         String[] parts = input.split(",");
